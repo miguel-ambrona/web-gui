@@ -21,4 +21,4 @@ get-ace:
 	git clone https://github.com/ajaxorg/ace-builds.git
 	mv ace-builds imported/
 	cp imported/mode-ocaml.js imported/ace-builds/src-noconflict/
-	cp imported/theme-ggmss.js imported/ace-builds/src-noconflict/
+	cp imported/theme-mytheme.js imported/ace-builds/src-noconflict/

@@ -76,7 +76,7 @@ document.getElementById("resultsbox").style =
     'overflow:auto; color:white; margin:30px; width:95%; height:' + 0.75*divs_height + 'px;';
 
 var editor = ace.edit("editor");
-editor.setTheme("ace/theme/ggmss");
+editor.setTheme("ace/theme/mytheme");
 editor.getSession().setMode("ace/mode/ocaml");
 editor.$blockScrolling = Infinity;
 

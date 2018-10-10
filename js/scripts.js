@@ -3,7 +3,7 @@ var files = [];
 try {
     var host = "ws://localhost:31415";
     console.log("Host:", host);
-    
+
     var s = new WebSocket(host);
 
     s.onopen = function (e) {
@@ -26,8 +26,6 @@ try {
             }
         } else if (e.data.substr(0,5) == "error"){
             document.getElementById("resultsbox").innerHTML = e.data.substr(5,e.data.length);
-        } else if (e.data.substr(19,4) == "text") {
-            katex.render(e.data, document.getElementById("vars-and-params"), { displayMode: false });
         } else {
             katex.render(e.data, document.getElementById("resultsbox"), { displayMode: false });
         }
@@ -66,10 +64,10 @@ function showHelp(){
     document.getElementById("modalBody").innerHTML =
         '<ul>' +
         '<li><kbd>Ctrl + <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></kbd> Eval previous command</li>' +
-        '<li><kbd>Ctrl + Enter</kbd> Eval current command</li>' + 
+        '<li><kbd>Ctrl + Enter</kbd> Eval current command</li>' +
         '<li><kbd>Ctrl + <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></kbd> Eval ne+xt command</li>' +
         '<li><kbd>Ctrl + Alt + o</kbd> Open file</li>' +
-        '<li><kbd>Ctrl + Alt + h</kbd> Show help</li>' + 
+        '<li><kbd>Ctrl + Alt + h</kbd> Show help</li>' +
         '</ul>'
 }
 
@@ -86,15 +84,14 @@ var map = {};
 onkeydown = onkeyup = function(e){
     e = e || event; // to deal with IE
     map[e.keyCode] = e.type == 'keydown';
-    
+
     if (map[17] && map[18] && map[79]){ // Cntr + Alt + o
         document.getElementById("openBtn").click();
     } else if (map[17] && map[18] && map[72]){ // Cntr + Alt +  h
         document.getElementById("helpBtn").click();
     } else if (map[17] || map[18]){
-        
+
     } else {
         setTimeout(function(){ map = {};}, 200);
     }
 }
-
