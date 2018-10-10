@@ -172,7 +172,6 @@ var Range = require("../range").Range;
 var Mode = function() {
     this.HighlightRules = OcamlHighlightRules;
     this.$behaviour = this.$defaultBehaviour;
-
     this.$outdent   = new MatchingBraceOutdent();
 };
 oop.inherits(Mode, TextMode);

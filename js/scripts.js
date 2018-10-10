@@ -3,7 +3,6 @@ var files = [];
 try {
     var host = "ws://localhost:31415";
     console.log("Host:", host);
-
     var s = new WebSocket(host);
 
     s.onopen = function (e) {
