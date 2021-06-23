@@ -65,15 +65,15 @@ function select_backwards(){
 };
 
 function analyze_selection(){
-    var input = editor.getSession().doc.getTextRange(editor.selection.getRange());
-    s.send(input);
+    let input = editor.getSession().doc.getTextRange(editor.selection.getRange());
+    request({ cmd: 'analyze', 'input' : input });
 };
 
 var divs_height = Math.round(0.95 * $(document).height());
-document.getElementById("editor-div").style = 'height: ' + divs_height + 'px;';
-document.getElementById("outputs-div").style = 'height: ' + divs_height + 'px;';
-document.getElementById("resultsbox").style =
-    'overflow:auto; color:white; margin:30px; width:95%; height:' + 0.75*divs_height + 'px;';
+//document.getElementById("editor-div").style = 'height: ' + divs_height + 'px;';
+//document.getElementById("outputs-div").style = 'height: ' + divs_height + 'px;';
+//document.getElementById("resultsbox").style =
+//    'overflow:auto; color:white; margin:30px; width:95%; height:' + 0.75*divs_height + 'px;';
 
 var editor = ace.edit("editor");
 editor.setTheme("ace/theme/mytheme");

@@ -1,19 +1,30 @@
-.container-full {
-  margin: 0 auto;
-  width: 100%;
-}
-
 .bg-dark {
-  font-size:19px;
-  background-color: #424242;
+    font-size: 19px;
+    background-color: #424242 !important;
 }
 
 .panel {
-  background-color: #353436;
+    background-color: #353436;
 }
 
-.active{
-  background-color: #A9D0F5;
+.active {
+    background-color: #e7f8fc;
+}
+
+.help-btn {
+    float: right;
+    background-color: #262424;
+    color: #f3fcff;
+}
+
+.help-btn:hover {
+    background-color: #484646;
+    color: #c3cdcc;
+}
+
+.results {
+    color: #f3fcff;
+    padding: 30px;
 }
 
 #editor {
@@ -23,5 +34,3 @@
     bottom: 0;
     left: 0;
 }
-
-.modal-backdrop { opacity:0.1 !important; background-color: #A9D0F5 }

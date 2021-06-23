@@ -4,57 +4,71 @@
     <meta charset="UTF-8">
     <title>Web GUI</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="imported/katex/katex.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link href="fontawesome/css/all.min.css" rel="stylesheet">
   </head>
 
-  <body class="body bg-dark">
-    <script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
+  <body class="body" style="background-color: #424242">
+
+    <!-- Help Modal -->
+    <div class="modal fade" id="helpModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog" >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Help</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <table class="table">
+              <tbody>
+                <tr><td><kbd>Ctrl + <span class="fas fa-arrow-up"></span></kbd></td><td>Eval previous command</td></tr>
+                <tr><td><kbd>Ctrl + Enter</kbd></td><td>Eval current command</td></tr>
+                <tr><td><kbd>Ctrl + <span class="fas fa-arrow-down"></span></kbd></td><td>Eval next command</td></tr>
+                <tr><td><kbd>Ctrl + Alt + O</kbd></td><td>Open file</td></tr>
+                <tr><td><kbd>Ctrl + Alt + G</kbd></td><td>Save file</td></tr>
+                <tr><td><kbd>Ctrl + Alt + H</kbd></td><td>Show help</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Files Modal -->
+    <div class="modal fade" id="filesModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog" >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Files</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div id="filesModalBody" class="modal-body"></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin: 30px">
+      <div class="row" style="min-height: 93vh">
+        <div class="col-sm-12 col-md-5" style="position: relative">
+          <div id="editor" style="font-size: 17px"></div>
+        </div>
+        <div class="col-sm-12 col-md-7">
+          <div id="outputs-div" class="panel" style="overflow:auto; min-height: 93vh">
+            <button id="helpBtn" type="button" class="btn help-btn" data-bs-toggle="modal" data-bs-target="#helpModal">?</button>
+            <div id="resultsbox" class="col-xs-12 col-md-12 results"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="imported/katex/katex.js"></script>
     <script type="text/javascript" src="imported/ace-builds/src-noconflict/ace.js" charset="utf-8"></script>
 
-
-    <div class="modal fade" id="Modal" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <h2 id="modal-title" class="modal-title"></h2>
-          </div>
-          <div id="modalBody" class="modal-body"></div>
-        </div>
-      </div>
-    </div>
-
-
-    <div id="container" class="container-full" style="overflow: hidden;">
-      <div class="container-fluid" style="margin-top: 30px">
-
-        <div id="editor-div" class="col-xs-12 col-sm-4">
-          <div id="editor" style="font-size:17px"></div>
-        </div>
-        <div class="col-xs-12 col-sm-8">
-          <div id="outputs-div" class="panel" style="overflow:auto">
-            <div class="btn-group pull-right" role="group">
-              <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                      aria-expanded="false" style="background-color: #262424; color: #F3FCFF">
-                Menu
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu">
-                <li><a id="openBtn" href="#" data-toggle="modal" data-target="#Modal" onClick="showFiles();">Open</a></li>
-                <li><a id="helpBtn" href="#" data-toggle="modal" data-target="#Modal" onClick="showHelp();">Help</a></li>
-              </ul>
-            </div>
-            <div id="resultsbox" class="col-xs-12"></div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <script type="text/javascript" src="js/scripts.js" charset="utf-8"></script>
     <script type="text/javascript" src="js/configure_ace.js" charset="utf-8"></script>
